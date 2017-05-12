@@ -103,6 +103,10 @@ class BlogController extends Controller
 
 
 
-        return $this->json($swapiResponse);
+        //return $this->json($swapiResponse);
+
+        return $this->render('jsonView.html.twig', [
+            'swapi' => json_encode($swapiResponse),
+        ]);
     }
 }
