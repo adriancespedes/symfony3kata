@@ -18,8 +18,15 @@ class BlogController extends Controller
     /**
      * @Route("/simple", name="simple")
      */
-    public function indexAction(Request $request)
+    public function simpleAction(Request $request)
     {
         return new Response("Simple");
+    }
+
+    /**
+     * @Route("/hi/{name}")
+     */
+    public function hiAction($name){
+        return new Response('Hola '.$name);
     }
 }
