@@ -119,11 +119,23 @@ class BlogController extends Controller
      */
     public function pdfDownloadAction()
     {
-
-
         $response = $this->file($this->get('kernel')->getRootDir(). "/../web/uploads/pdf-test.pdf");
 
         return $response;
+    }
+
+    /**
+     * @Route("/flysystem")
+     * @return Response
+     */
+    public function flysytemCheckAction()
+    {
+
+        $filesystem = $this->get('flysystem');
+        $exists = $filesystem->has("pdf-test.pdf");
+        var_dump($exists);
+
+        return;
     }
 
 }
