@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class BlogController extends Controller
 {
@@ -102,11 +103,27 @@ class BlogController extends Controller
         ];
 
 
-
         //return $this->json($swapiResponse);
 
-        return $this->render('jsonView.html.twig', [
-            'swapi' => json_encode($swapiResponse),
-        ]);
+        return $this->render(
+            'jsonView.html.twig',
+            [
+                'swapi' => json_encode($swapiResponse),
+            ]
+        );
     }
+
+    /**
+     * @Route("/pdf")
+     * @return Response
+     */
+    public function pdfDownloadAction()
+    {
+
+
+        $response = $this->file($this->get('kernel')->getRootDir(). "/../web/uploads/pdf-test.pdf");
+
+        return $response;
+    }
+
 }
