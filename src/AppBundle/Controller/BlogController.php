@@ -25,8 +25,11 @@ class BlogController extends Controller
 
     /**
      * @Route("/hi/{name}")
+     * @param $name
+     * @return Response
      */
-    public function hiAction($name){
+    public function hiAction(String $name)
+    {
         return new Response('Hola '.$name);
     }
 }
