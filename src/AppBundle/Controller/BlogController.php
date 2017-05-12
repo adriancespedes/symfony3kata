@@ -32,4 +32,19 @@ class BlogController extends Controller
     {
         return new Response('Hola '.$name);
     }
+
+    /**
+     * @Route("/hello/{name}")
+     * @param String $name
+     * @return Response
+     * @throws \HttpInvalidParamException
+     */
+    public function helloToniSiscuAction(String $name)
+    {
+        if ($name !== 'Toni' && $name !== 'Siscu') {
+            throw $this->createNotFoundException('No es Toni o Siscu');
+        }
+        return new Response('Hola '.$name);
+
+    }
 }
