@@ -45,6 +45,15 @@ class BlogController extends Controller
             throw $this->createNotFoundException('No es Toni o Siscu');
         }
         return new Response('Hola '.$name);
+    }
 
+    /**
+     * @Route("/hellof/{name}", requirements={"name": "Toni|Siscu"})
+     * @param String $name
+     * @return Response
+     */
+    public function helloToniSiscoForbiddenAction(String $name)
+    {
+        return new Response('Hola '.$name);
     }
 }
